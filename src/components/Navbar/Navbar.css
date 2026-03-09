@@ -1,0 +1,37 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff7043;
+  padding: 15px 40px;
+  color: white;
+  height: 100px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.nav-links li a:hover {
+  border-bottom: 2px solid white;
+}
+
+.search-box input {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: none;
+}

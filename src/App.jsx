@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Footer from "./components/Footer/Footer";
+import Recipe from "./components/RecipeCard/Recipe"
+import Hero from './components/Hero/Hero';
+import Category from './components/Category/Category';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  
+        <Navbar/>
+
+        <SearchBar/>
+         <h1 style={{textAlign:"center"}}>Popular Recipes</h1>
+
+      <div style={{display:"flex", justifyContent:"center", flexWrap:"wrap"}}>
+        <Recipe 
+          image="https://source.unsplash.com/300x200/?pasta"
+          title="Creamy Pasta"
+          time="25 mins"
+        />
+
+        <Recipe 
+          image="https://source.unsplash.com/300x200/?pizza"
+          title="Cheese Pizza"
+          time="30 mins"
+        />
+
+        <Recipe 
+          image="https://source.unsplash.com/300x200/?burger"
+          title="Chicken Burger"
+          time="20 mins"
+        />
+   
+</div>
+<Hero/>
+<Category/>
+      <Footer />
+   </>
+  );
 }
 
-export default App
+export default App;

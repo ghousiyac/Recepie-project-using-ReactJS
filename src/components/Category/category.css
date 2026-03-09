@@ -1,0 +1,23 @@
+.categories {
+  text-align: center;
+  padding: 40px;
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.category-card {
+  padding: 20px 30px;
+  background: #ff7043;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  background: #ff5722;
+}
