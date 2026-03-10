@@ -45,21 +45,26 @@
 
 // export default App;
 
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Recipe from "./pages/Recipe";
-import Category from"./pages/Category";
+import Category from "./pages/Category";
+import Popular_Recipes from "./pages/Popular_Recipes";
+import RecipeDetails from "./pages/Recipe";   // recipe details page
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-    <Route path="/recipe" element={<Recipe />} />
-<Route path="/category" element={<Category />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/popular" element={<Popular_Recipes />} />
+
+        {/* recipe details page */}
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+
       </Routes>
     </BrowserRouter>
   );
