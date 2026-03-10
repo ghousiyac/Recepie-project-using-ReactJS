@@ -1,62 +1,91 @@
-.recipe-page{
+.recipe-page {
   display: flex;
   justify-content: center;
   padding: 40px;
   background-color: #f4f4f4;
 }
 
-.recipe-details-card{
+.recipe-details-card {
   width: 650px;
-  background-color: white;
+  background-color: #fff3e0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
+  padding: 20px;
 }
 
-/* Recipe Image */
-.recipe-details-image{
-  width: 300px;
-  height: 200px;
+.recipe-details-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   object-fit: cover;
-  margin: 20px auto;
-  border-radius: 10px;
+  margin: 0 auto 20px auto;
+  border-radius: 12px;
   display: block;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
 }
 
-/* Content section */
-.recipe-details-content{
-  padding: 25px;
+.recipe-details-content {
+  padding: 20px;
+  text-align: left;
+  background-color: #ffe0b2;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
 }
 
-.recipe-details-title{
+.recipe-details-title {
   font-size: 28px;
   color: #ff7043;
   margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
 }
 
-.recipe-meta{
-  color: gray;
+.recipe-meta {
+  color: #555;
   margin-bottom: 20px;
+  font-style: italic;
+  text-align: center;
 }
 
-.recipe-instructions{
-  line-height: 1.6;
-  color: #444;
-  text-align: left;
-  margin-bottom: 25px;
+.recipe-instructions-box {
+  background-color: #fff8f0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-height: 450px;
+  overflow-y: auto;
 }
 
-/* Back Button */
-.back-btn{
+.recipe-instructions {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-line;
+  text-align: justify;
+  word-wrap: break-word;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.recipe-instructions li {
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  display: block;
+  margin: 20px auto 0 auto;
   padding: 10px 20px;
   border: none;
   background-color: #ff7043;
   color: white;
   border-radius: 6px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.back-btn:hover{
+.back-btn:hover {
   background-color: #ff5722;
 }
