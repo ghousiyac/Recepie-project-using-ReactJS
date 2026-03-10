@@ -1,53 +1,64 @@
-// import React from 'react'
-// import './Navbar.css'
-// const Navbar = () => {
-
-//   return (
-//     <nav className="navbar">
-//       <div className="logo">
-//         🍲 RecipeHub
-//       </div>
-
-//       <ul className="nav-links">
-//         <li><a href="/">Home</a></li>
-//         <li><a href="/recipes">Recipes</a></li>
-//         <li><a href="/categories">Categories</a></li>
-//         <li><a href="/about">About</a></li>
-//       </ul>
-
-//       <div className="search-box">
-//         <input type="text" placeholder="Search recipes..." />
-//       </div>
-//     </nav>
-//   )
-// }
-
-// export default Navbar
-
-
-import React from 'react'
-import './Navbar.css'
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
+import { FaYoutube, FaInstagram, FaLinkedin, FaSearch } from "react-icons/fa";
+import { HiMenu } from "react-icons/hi";
 
 const Navbar = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className="navbar">
-      <div className="logo">
-        🍲 RecipeHub
+    <header>
+
+      {/* TOP HEADER */}
+      <div className="top-header">
+
+        {/* LOGO */}
+        <div className="logo">
+          🍲 <span>Recipe</span>Hub
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="right-section">
+
+          {/* SEARCH BAR */}
+          <div className="search-box">
+            <input type="text" placeholder="Search recipes..." />
+            <button>
+              <FaSearch />
+            </button>
+          </div>
+
+          {/* SOCIAL ICONS */}
+          <div className="social-icons">
+            <FaYoutube />
+            <FaInstagram />
+            <FaLinkedin />
+          </div>
+
+          {/* MOBILE MENU ICON */}
+          <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+            <HiMenu />
+          </div>
+
+        </div>
+
       </div>
 
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/recipe">Recipes</Link></li>
-        <li><Link to="/category">Categories</Link></li>
-        <li><Link to="/about">About</Link></li>
-      </ul>
 
-      <div className="search-box">
-        <input type="text" placeholder="Search recipes..." />
-      </div>
-    </nav>
-  )
-}
+      {/* MENU BAR */}
+      <nav className={menuOpen ? "menu-bar active" : "menu-bar"}>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/recipe">Recipes</Link></li>
+          <li><Link to="/category">Categories</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+      </nav>
 
-export default Navbar
+    </header>
+  );
+};
+
+export default Navbar;

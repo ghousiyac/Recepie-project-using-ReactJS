@@ -1,0 +1,13 @@
+button{
+padding:10px 20px;
+border:none;
+background:#193671;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:disabled{
+background:#ccc;
+cursor:not-allowed;
+}

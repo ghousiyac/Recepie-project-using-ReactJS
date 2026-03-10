@@ -1,7 +1,8 @@
 .footer {
-  background-color: #333;
+  background-color: #0a2e52;
   color: white;
   padding: 40px 20px;
+  height: 150px;
 }
 
 .footer-container {
@@ -11,7 +12,7 @@
 }
 
 .footer-section {
-  margin: 10px;
+  margin: 5px;
 }
 
 .footer-section h2,

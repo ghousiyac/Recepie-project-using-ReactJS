@@ -1,12 +1,12 @@
 import React from "react";
 import "./About.css";
-import Navbar from "../components/Navbar/Navbar";
+// import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 function About() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="about-container">
         <h1 className="about-title">ABOUT US</h1>

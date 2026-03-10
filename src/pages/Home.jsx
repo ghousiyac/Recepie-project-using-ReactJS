@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
-import SearchBar from "../components/SearchBar/SearchBar";
+// import SearchBar from "../components/SearchBar/SearchBar";
 import RecipeCard from "../components/RecipeCard/RecipeCard";
 import Footer from "../components/Footer/Footer";
 import axios from "axios";
+import NonVegRecipes from "../components/NonVeg/NonVegRecipes";
 
 function Home() {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -25,26 +26,55 @@ function Home() {
       }
     };
 
+    // const fetchBreakfast = async () => {
+    //   try {
+    //     const res = await axios.get(
+    //       "https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast"
+    //     );
+    //     const recipesWithInfo = [];
+    //     for (let meal of res.data.meals) {
+    //       const details = await axios.get(
+    //         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`
+    //       );
+    //       const mealDetail = details.data.meals[0];
+    //       if (mealDetail.strInstructions && mealDetail.strInstructions.trim().length > 0) {
+    //         recipesWithInfo.push(mealDetail);
+    //       }
+    //     }
+    //     setBreakfastRecipes(recipesWithInfo.slice(0, 8));
+    //   } catch (error) {
+    //     console.log("Error fetching breakfast recipes:", error);
+    //   }
+    // };
+
     const fetchBreakfast = async () => {
-      try {
-        const res = await axios.get(
-          "https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast"
+  try {
+
+    const res = await axios.get(
+      "https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast"
+    );
+
+    const meals = res.data.meals;
+
+    const recipeDetails = await Promise.all(
+      meals.map(async (meal) => {
+        const detail = await axios.get(
+          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`
         );
-        const recipesWithInfo = [];
-        for (let meal of res.data.meals) {
-          const details = await axios.get(
-            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`
-          );
-          const mealDetail = details.data.meals[0];
-          if (mealDetail.strInstructions && mealDetail.strInstructions.trim().length > 0) {
-            recipesWithInfo.push(mealDetail);
-          }
-        }
-        setBreakfastRecipes(recipesWithInfo.slice(0, 8));
-      } catch (error) {
-        console.log("Error fetching breakfast recipes:", error);
-      }
-    };
+        return detail.data.meals[0];
+      })
+    );
+
+    const filtered = recipeDetails.filter(
+      (meal) => meal.strInstructions && meal.strInstructions.trim() !== ""
+    );
+
+    setBreakfastRecipes(filtered.slice(0, 8));
+
+  } catch (error) {
+    console.log("Error fetching breakfast recipes:", error);
+  }
+};
 
     fetchPopular();
     fetchBreakfast();
@@ -54,7 +84,7 @@ function Home() {
     <>
       <Navbar />
       <Hero />
-      <SearchBar />
+      {/* <SearchBar /> */}
 
       <h2 style={{ textAlign: "center", fontWeight: "bold", fontSize: "2rem", color: "black", margin: "30px 0" }}>
         Popular Recipes
@@ -84,7 +114,11 @@ function Home() {
             time="20-30 mins"
           />
         ))}
+    
+
       </div>
+
+       <NonVegRecipes />
 
       <Footer />
     </>

@@ -1,37 +1,166 @@
+/* header{
+width:100%;
+background:white;
+} */
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ff7043;
-  padding: 15px 40px;
-  color: white;
-  height: 100px;
+header{
+width:100%;
+background:white;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
+/* TOP HEADER */
+
+.top-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 30px;
+border-bottom:3px solid #1f3c5b;
 }
 
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 25px;
+.logo{
+font-size:32px;
+font-weight:bold;
+color:#1f3c5b;
 }
 
-.nav-links li a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
+.logo span{
+color:#ff6b5c;
 }
 
-.nav-links li a:hover {
-  border-bottom: 2px solid white;
+/* RIGHT SIDE */
+
+.right-section{
+display:flex;
+align-items:center;
+gap:20px;
 }
 
-.search-box input {
-  padding: 6px 10px;
-  border-radius: 5px;
-  border: none;
+/* SEARCH */
+
+.search-box{
+display:flex;
+border:2px solid #ddd;
+border-radius:25px;
+overflow:hidden;
+}
+
+.search-box input{
+border:none;
+outline:none;
+padding:8px 15px;
+width:100px;
+}
+
+.search-box button{
+border:none;
+background:#0d1738;
+color:white;
+padding:8px 15px;
+cursor:pointer;
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+display:flex;
+gap:15px;
+font-size:20px;
+color:#1f3c5b;
+}
+
+.social-icons svg{
+cursor:pointer;
+transition:0.3s;
+}
+
+.social-icons svg:hover{
+color:#ff6b5c;
+}
+
+/* MENU BAR */
+
+.menu-bar{
+border-top:2px solid #1f3c5b;
+}
+
+.menu-bar ul{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:5px;
+list-style:none;
+}
+
+.menu-bar li{
+font-size:20px;
+font-weight:700;
+}
+
+.menu-bar a{
+text-decoration:none;
+color:#1f3c5b;
+}
+
+.menu-bar a:hover{
+color:#ff6b5c;
+}
+
+/* MOBILE ICON */
+
+.menu-icon{
+display:none;
+font-size:30px;
+cursor:pointer;
+}
+
+/* MOBILE VIEW */
+
+@media(max-width:768px){
+
+.search-box{
+display:none;
+}
+
+.social-icons{
+display:none;
+}
+
+.menu-icon{
+display:block;
+}
+
+.menu-bar{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#0c243d;
+display:none;
+}
+
+.menu-bar.active{
+display:block;
+}
+
+.menu-bar ul{
+flex-direction:column;
+padding:0;
+}
+
+.menu-bar li{
+border-bottom:3px solid #162f47;
+padding:18px 25px;
+font-size:22px;
+}
+
+.menu-bar a{
+color:white;
+}
+
 }
