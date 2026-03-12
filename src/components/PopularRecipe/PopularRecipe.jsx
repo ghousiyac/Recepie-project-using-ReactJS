@@ -21,7 +21,22 @@ const PopularRecipe = () => {
   }, []);
 
   return (
+    <>
+
+ <h2
+        style={{
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "2rem",
+          margin: "30px 0",
+          color:"#193671",
+        }}
+      >
+        Pupuler Recipes
+      </h2>
+
     <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+   
       {recipes.map((item) => (
         <RecipeCard
           key={item.idMeal}
@@ -32,6 +47,7 @@ const PopularRecipe = () => {
         />
       ))}
     </div>
+    </>
   );
 };
 
