@@ -1,44 +1,77 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaYoutube, FaInstagram, FaLinkedin, FaSearch } from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+  
+
+  const handleSearch = (e) => {
+  if (e) e.preventDefault();
+
+  const text = query.trim();
+  if (!text) return;
+
+  const page = text.toLowerCase();
+  if (page === "about") {
+    navigate("/about");
+    if (onSearch) onSearch("", "page");
+  } else if (page === "category" || page === "categories") {
+    navigate("/category");
+    if (onSearch) onSearch("", "page");
+  } else if (page === "home") {
+    navigate("/");
+    if (onSearch) onSearch("", "page");
+  } else {
+    if (onSearch) onSearch(text, "recipe");
+    navigate("/");
+  }
+
+  setQuery(""); 
+};
 
   return (
     <header>
 
-      {/* TOP HEADER */}
       <div className="top-header">
 
-        {/* LOGO */}
         <div className="logo">
           🍲 <span>Recipe</span>Hub
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="right-section">
 
-          {/* SEARCH BAR */}
-          <div className="search-box">
-            <input type="text" placeholder="Search recipes..." />
-            <button>
+          {/* FORM SEARCH */}
+          <form className="search-box" onSubmit={handleSearch}>
+
+            <input
+              type="text"
+              placeholder="Search recipes or pages..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+
+            <button type="submit">
               <FaSearch />
             </button>
-          </div>
 
-          {/* SOCIAL ICONS */}
+          </form>
+
           <div className="social-icons">
             <FaYoutube />
             <FaInstagram />
             <FaLinkedin />
           </div>
 
-          {/* MOBILE MENU ICON */}
-          <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+          <div
+            className="menu-icon"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <HiMenu />
           </div>
 
@@ -46,8 +79,6 @@ const Navbar = () => {
 
       </div>
 
-
-      {/* MENU BAR */}
       <nav className={menuOpen ? "menu-bar active" : "menu-bar"}>
         <ul>
           <li><Link to="/">Home</Link></li>
