@@ -6,6 +6,7 @@ import RecipeCard from "../components/RecipeCard/RecipeCard";
 import Footer from "../components/Footer/Footer";
 import axios from "axios";
 import NonVegRecipes from "../components/NonVeg/NonVegRecipes";
+import HealthyRecipes from "../components/HealthyRecipes/HealthyRecipes";
 
 function Home() {
 
@@ -167,6 +168,8 @@ function Home() {
       </div>
 
       <NonVegRecipes />
+
+      <HealthyRecipes />
 
       <Footer />
 
